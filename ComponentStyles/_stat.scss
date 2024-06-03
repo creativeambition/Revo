@@ -1,0 +1,27 @@
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+
+  .stat-header {
+    display: flex;
+    font-size: 50px;
+    gap: 4px;
+
+    .value {
+      font-family: pilowlava;
+    }
+  }
+
+  span {
+    color: var(--secondary-text-color);
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+  }
+}

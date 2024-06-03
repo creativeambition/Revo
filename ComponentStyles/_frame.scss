@@ -1,0 +1,319 @@
+.page.frame {
+  padding: 0;
+  position: relative;
+  width: 100%;
+  display: flex;
+
+  .scroll {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    pointer-events: none;
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
+
+    .icon {
+      font-size: 24px;
+
+      span {
+        font-size: 12px;
+      }
+    }
+
+    .mouse {
+      width: 16px;
+      height: 16px;
+      fill: var(--secondary-text-color);
+    }
+
+    &.left {
+      left: 50px;
+    }
+
+    &.right {
+      right: 50px;
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .stroke-path {
+    position: absolute;
+    border: none;
+    background: var(--horizontal-stroke-gradient);
+    height: 1px;
+    width: 35%;
+
+    &:nth-of-type(1) {
+      top: 30%;
+    }
+
+    &:nth-of-type(2) {
+      bottom: 30%;
+    }
+
+    &:nth-of-type(3) {
+      top: 30%;
+      right: 0;
+    }
+
+    &:nth-of-type(4) {
+      bottom: 30%;
+      right: 0;
+    }
+  }
+
+  .content-wrapper {
+    display: flex;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+
+    .page {
+      min-width: 100%;
+      flex-direction: row;
+      scroll-snap-align: start;
+      transition: transform 1s ease-in-out;
+
+      &.animate {
+        &::before {
+          transform: scale(1);
+          opacity: 1;
+        }
+
+        .text-animation-boundaries > div {
+          animation: commonAnimation 1.5s ease forwards;
+          animation-delay: calc(var(--delay) * 200ms);
+        }
+
+        span {
+          animation: commonAnimation 1s ease 0.4s forwards;
+        }
+
+        .center {
+          svg circle {
+            animation: animateSvgStroke 1s ease 1s forwards;
+          }
+
+          .illustration {
+            animation: commonAnimation 1.5s ease forwards;
+          }
+        }
+
+        .right {
+          button {
+            animation: commonAnimation 1.5s ease 0.5s forwards;
+          }
+
+          .analytics {
+            animation: commonAnimation 0.5s ease 0.5s forwards;
+          }
+        }
+      }
+
+      &::before {
+        position: absolute;
+        content: "";
+        height: 300px;
+        aspect-ratio: 1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background-color: var(--color);
+        filter: blur(180px);
+        opacity: 0.6;
+        transform: scale(0);
+        opacity: 0;
+        transition: 1.5s ease;
+      }
+
+      section {
+        position: inherit;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .description {
+          max-width: 60%;
+          transform: translateY(20px);
+          opacity: 0;
+        }
+
+        &.left {
+          h3.gradient {
+            font-size: var(--text-sm);
+            margin-bottom: 10px;
+            white-space: wrap;
+          }
+
+          .short-captions-wrapper {
+            margin-top: auto;
+
+            h1 {
+              font-size: 40px;
+              font-weight: 500;
+
+              &.gradient {
+                font-weight: bold;
+              }
+            }
+          }
+        }
+
+        &.center {
+          align-items: center;
+          justify-content: center;
+
+          svg {
+            circle {
+              stroke: var(--alt-color);
+              stroke-dasharray: 2000;
+              stroke-dashoffset: 2000;
+            }
+          }
+
+          .illustration {
+            position: absolute;
+            height: 70%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            opacity: 0;
+            transform: translateY(250px);
+            transition: 0.5s ease;
+          }
+        }
+
+        &.right {
+          align-items: flex-end;
+          text-align: end;
+          gap: 10px;
+
+          button {
+            padding: 14px 24px;
+            border-radius: 12px;
+            transform: translateY(20px);
+            opacity: 0;
+
+            &:hover {
+              color: var(--secondary-color);
+              fill: var(--secondary-color);
+            }
+          }
+
+          .analytics {
+            display: flex;
+            margin-top: auto;
+            flex-direction: column;
+            transform: translateY(50px);
+            opacity: 0;
+
+            .value {
+              font-size: 50px;
+
+              span {
+                font-size: 20px;
+                font-weight: 600;
+              }
+            }
+
+            span {
+              color: var(--secondary-text-color);
+            }
+          }
+        }
+      }
+    }
+
+    .dummy-element {
+      min-width: 150px;
+    }
+  }
+}
+
+@media (max-width: "1000px") {
+  .page.frame {
+    .description {
+      max-width: 100% !important;
+    }
+  }
+}
+
+@media (max-width: "640px") {
+  .page.frame {
+    .scroll {
+      &.left {
+        left: 5px;
+      }
+
+      &.right {
+        right: 5px;
+      }
+    }
+
+    .content-wrapper {
+      .page {
+        align-items: center;
+
+        &::before {
+          height: 25vh;
+          filter: blur(180px);
+        }
+
+        section {
+          &.left {
+            height: 100%;
+            align-items: center;
+
+            h3.gradient {
+              text-align: center;
+            }
+
+            .description {
+              text-align: center;
+            }
+
+            .short-captions-wrapper {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              h1 {
+                font-size: var(--text-size);
+              }
+            }
+          }
+
+          &.center {
+            position: absolute;
+            left: 0;
+            right: 0;
+
+            svg {
+              height: 30vh;
+
+              circle {
+                stroke: none;
+              }
+            }
+
+            .illustration {
+              height: 100%;
+            }
+          }
+
+          &.right {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.service-tool {
+  min-width: 25%;
+  aspect-ratio: 1;
+  background-color: var(--tertiary-color);
+  border: 2px solid var(--alt-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover img {
+    transform: translateY(-40px) scale(1.05);
+  }
+}

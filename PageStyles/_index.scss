@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 100%;
+  font-family: Poppins, sans-serif, Helvetica, Arial;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // accent colors
+  --primary-color: #ff5666;
+  // --primary-color: #61cc76;
+  --secondary-color: #595ffb;
+
+  // lightmode colors
+  --light-bg-color: #f8f8f8;
+  --light-primary-text-color: #000000;
+  --light-secondary-text-color: #00000080;
+  --light-tertiary-color: #e5e5e5b3;
+  --light-alt-color: #00000038;
+
+  // darkmode colors
+  --dark-bg-color: #242121;
+  --dark-primary-text-color: #ffffff;
+  --dark-secondary-text-color: #ffffff80;
+  --dark-tertiary-color: #00000036;
+  --dark-alt-color: #ffffff26;
+
+  // styles (lightmode)
+  --text-gradient: linear-gradient(
+    40deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+
+  --vertical-light-stroke-gradient: linear-gradient(
+    #00000000,
+    var(--light-alt-color),
+    #00000000
+  );
+  --horizontal-light-stroke-gradient: linear-gradient(
+    90deg,
+    #00000000,
+    var(--light-alt-color),
+    #00000000
+  );
+
+  // styles (darkmode)
+  --vertical-dark-stroke-gradient: linear-gradient(
+    #00000000,
+    var(--dark-alt-color),
+    #00000000
+  );
+  --horizontal-dark-stroke-gradient: linear-gradient(
+    90deg,
+    #ffffff00,
+    var(--dark-alt-color),
+    #ffffff00
+  );
+
+  // layout
+  --header-height: 60px;
+  --device-width: calc(100vw / 3);
+  --padding: 100px;
+
+  --text-lg: 65px;
+  --text-mid: 60px;
+  --text-md: 50px;
+  --text-sm: 26px;
+  --text-size: var(--text-lg);
+
+  ::selection {
+    background-color: var(--primary-color);
+    color: black;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+  }
+
+  button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: Poppins, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--tertiary-color);
+    border: 1px solid var(--alt-color);
+    color: var(--primary-text-color);
+    fill: var(--primary-text-color);
+    cursor: pointer;
+
+    .icon {
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transition: 0.3s ease;
+
+      .arrow {
+        transform: translateX(5px);
+      }
+    }
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+}
+
+@media (max-width: "1400px") {
+  :root {
+    --padding: 50px;
+    --text-size: var(--text-mid);
+  }
+}
+
+@media (max-width: "1200px") {
+  :root {
+    --padding: 40px;
+    --text-size: var(--text-md);
+  }
+}
+
+@media (max-width: "1000px") {
+  :root {
+    --text-size: var(--text-mid);
+  }
+}
+
+@media (max-width: "640px") {
+  :root {
+    --padding: 15px;
+    --text-size: var(--text-sm);
+  }
+}
+
+@media (max-width: "350px") {
+  :root {
+    --header-height: 20px;
+    --padding: 10px;
+    --text-size: 3vh;
+  }
+}
