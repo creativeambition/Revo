@@ -28,7 +28,7 @@ body {
     }
 
     .grid-bg {
-      opacity: 0.08;
+      --opacity: 0.08;
     }
 
     video {
@@ -109,7 +109,7 @@ body {
 
   nav {
     position: fixed;
-    width: var(--device-width);
+    width: 30vw;
     background-color: var(--tertiary-color);
     border: 1px solid var(--alt-color);
     display: flex;
@@ -197,14 +197,22 @@ body {
     filter: saturate(0);
     background-size: contain;
     z-index: -5;
-    opacity: 0.5;
+    opacity: 0;
+    animation: fade-in 1s ease-in-out 1s forwards;
+    --opacity: 0.3;
+
+    @keyframes fade-in {
+      to {
+        opacity: var(--opacity);
+      }
+    }
 
     &::after {
       position: absolute;
       content: "";
       height: 100%;
       width: 100%;
-      background: radial-gradient(transparent, var(--bg-color));
+      background: radial-gradient(circle, transparent, var(--bg-color));
     }
   }
 
@@ -221,7 +229,7 @@ body {
     }
 
     .gradient {
-      font-weight: 600;
+      font-weight: bold;
       background: var(--text-gradient);
       background-clip: text;
       color: transparent;

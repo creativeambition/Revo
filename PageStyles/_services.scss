@@ -5,10 +5,6 @@
   align-items: center;
 
   &.animate {
-    .sponsors img {
-      animation: commonAnimation 1s ease forwards;
-    }
-
     .tools {
       animation: animateTools 1.8s ease forwards;
 
@@ -27,6 +23,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-weight: 600;
 
     .tools {
       position: absolute;
@@ -98,15 +95,43 @@
   .sponsors {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 60px;
+    width: 100%;
     overflow: hidden;
-    justify-content: space-around;
-    gap: 70px;
 
-    img {
-      height: 30px;
-      transform: translate(0, 100px);
-      opacity: 0;
+    .row {
+      display: flex;
+      height: 45px;
+      align-items: center;
+      mask-image: linear-gradient(90deg, transparent, black, transparent);
+      --duration: 20;
+
+      &:last-child {
+        --duration: 30;
+      }
+
+      img {
+        position: absolute;
+        height: 40px;
+        object-fit: contain;
+        width: calc(100% / var(--count));
+        left: calc(100% / var(--count) * -1);
+        animation: slide calc(var(--duration) * 1s) linear infinite;
+        animation-delay: calc(
+          var(--id) * (var(--duration) / var(--count)) * 1s
+        );
+
+        @keyframes slide {
+          0% {
+            left: calc(100% / var(--count) * -1);
+          }
+
+          100% {
+            left: 100%;
+          }
+        }
+      }
     }
   }
 }

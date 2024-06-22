@@ -27,26 +27,6 @@
     }
   }
 
-  .stroke-path {
-    position: absolute;
-    height: 90%;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: -1;
-    width: 1px;
-    background: var(--vertical-stroke-gradient);
-    border: none;
-    opacity: 0.5;
-
-    &:nth-of-type(1) {
-      left: var(--device-width);
-    }
-
-    &:nth-of-type(2) {
-      right: var(--device-width);
-    }
-  }
-
   .main-content {
     display: flex;
     flex-direction: column;
@@ -96,7 +76,7 @@
     flex-direction: column;
     gap: 8px;
     flex: 1;
-    min-width: var(--device-width);
+    min-width: 30vw;
 
     > span {
       padding: 0 var(--padding) 0 50px;
